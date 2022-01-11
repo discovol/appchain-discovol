@@ -1,0 +1,46 @@
+[package]
+authors = ['Substrate DevHub <https://github.com/substrate-developer-hub>']
+description = "A Pallet that implements a basic account-based cryptocurrency"
+edition = "2018"
+license = "GPL-3.0-or-later"
+name = "pallet-dev"
+repository = 'https://github.com/substrate-developer-hub/recipes'
+version = "3.0.0"
+
+[dependencies]
+bs58 = {version = "0.4.0", default-features = false}
+log = "0.4"
+parity-scale-codec = {version = "2.0", features = ["derive"], default-features = false}
+rustc-hex = {version = "2.1.0", default-features = false}
+
+# Substrate packages
+frame-support = {version = '3.0', default-features = false}
+frame-system = {version = '3.0', default-features = false}
+
+[dev-dependencies]
+serde = '1.0'
+
+[dependencies.sp-std]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+tag = 'monthly-2021-08'
+version = '3.0.0'
+
+[dependencies.hex-literal]
+optional = false
+version = '0.3.1'
+
+# Substrate packages
+sp-core = '3.0'
+sp-io = '3.0'
+sp-runtime = '3.0'
+
+[features]
+default = ['std']
+std = [
+  'parity-scale-codec/std',
+  'frame-support/std',
+  'frame-system/std',
+  'rustc-hex/std',
+  'bs58/std',
+]
