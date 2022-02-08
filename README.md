@@ -1,8 +1,8 @@
-# Discovol Appchain 
+# Octopus Appchain Template
 
 # TODO
 ```
 $ cargo build
-$ ./target/debug/appchain-discovol purge-chain --dev
-$ ./target/debug/appchain-discovol --dev --enable-offchain-indexing true
+$ ./target/debug/appchain-barnacle purge-chain --dev
+$ ./target/debug/appchain-barnacle --dev --enable-offchain-indexing true
 ```
