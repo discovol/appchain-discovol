@@ -1,5 +1,6 @@
 //! Substrate Node Template CLI library.
 #![warn(missing_docs)]
+#![recursion_limit = "2048"] //256
 
 mod chain_spec;
 #[macro_use]

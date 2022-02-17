@@ -36,7 +36,8 @@ pub struct Extensions {
 pub type ChainSpec = sc_service::GenericChainSpec<GenesisConfig, Extensions>;
 /// Octopus testnet generator
 pub fn octopus_testnet_config() -> Result<ChainSpec, String> {
-	ChainSpec::from_json_bytes(&include_bytes!("../../resources/testnet.json")[..])
+	//ChainSpec::from_json_bytes(&include_bytes!("../../resources/testnet.json")[..])
+	ChainSpec::from_json_bytes(&include_bytes!("../../resources/discovolSpecRaw.json")[..])	
 }
 
 fn session_keys(
