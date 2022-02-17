@@ -26,6 +26,8 @@ sp-runtime = {git = "https://github.com/paritytech/substrate.git", branch = "pol
 
 sp-std = {git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.13", default-features = false}
 
+log = "0.4"
+
 pallet-register = {path = '../register', default-features = false}
 
 [features]

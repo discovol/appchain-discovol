@@ -39,6 +39,8 @@ pub mod pallet {
 		Initialized(T::AccountId),
 
 		SpreadUrlCreated(T::AccountId, Vec<u8>, Vec<u8>, BalanceOf<T>, u8),
+
+		BatchCompleted(T::AccountId, Vec<T::AccountId>, u128),
 		//
 	}
 
@@ -104,7 +106,8 @@ pub mod pallet {
 			//
 		}
 
-		#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(4,4))]
+		//#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(4,4))]
+		#[pallet::weight(1_000)]
 		pub fn create_spread(origin: OriginFor<T>, hash: Vec<u8>, url: Vec<u8>, relation: T::AccountId, score: u8) -> DispatchResultWithPostInfo {
 			//
 

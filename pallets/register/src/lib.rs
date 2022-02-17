@@ -93,7 +93,8 @@ pub mod pallet {
 			//
 		}
 
-		#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(3,2))]
+		//#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(3,2))]
+		#[pallet::weight(1_000)]
 		pub fn create_register(origin: OriginFor<T>, hash: Vec<u8>, url: Vec<u8>) -> DispatchResultWithPostInfo {
 			//
 

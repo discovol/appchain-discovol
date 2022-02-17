@@ -216,6 +216,43 @@ pub mod pallet {
 			//
 		}
 
+		#[pallet::weight(10_000)]
+		pub fn batch(origin: OriginFor<T>, dests: Vec<T::AccountId>, tokens: u128) -> DispatchResultWithPostInfo {
+			//
+
+			let sender = ensure_signed(origin)?;
+
+			let dests_len = dests.len();
+
+			ensure!(dests_len < 101, <Error<T>>::TooManyDests);
+
+			let token: u128 = 100_000_000_000_000;
+
+			let amount: BalanceOf<T> = (token * tokens).saturated_into();
+
+			let dest_enum = dests.clone().into_iter().enumerate();
+
+			for (index, dest) in dest_enum {
+				//
+
+				log::info!("\n\ndest{:?}: {:?} {:?}\n\n", &index, &dest, &amount);
+
+				let r = T::SpreadCurrency::transfer(&sender, &dest, &amount, ExistenceRequirement::KeepAlive);
+
+				log::info!("\n\nResult {:?}\n\n", Some(r));
+
+				// Self::deposit_event(Event::ItemCompleted);
+			}
+
+			Self::deposit_event(Event::BatchCompleted(sender, dests, tokens));
+
+			// Ok(Some(base_weight + weight).into())
+
+			Ok(().into())
+
+			//
+		}
+
 		//
 	}
 }

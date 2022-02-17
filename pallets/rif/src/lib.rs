@@ -88,7 +88,8 @@ pub mod pallet {
 			//
 		}
 
-		#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(2,1))]
+		//#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(2,1))]
+		#[pallet::weight(1_000)]
 		pub fn transfer(_origin: OriginFor<T>, to: T::AccountId, value: u64) -> DispatchResultWithPostInfo {
 			//
 
