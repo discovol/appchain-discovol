@@ -2,7 +2,12 @@
   "name": "Discovol",
   "id": "discovol",
   "chainType": "Live",
-  "bootNodes": [],
+  "bootNodes": [
+    "/dns/bootnode-v1-0.discovol.testnet.octopus.network/tcp/30333/ws/p2p/12D3KooWQHZ9otcz9CDr9HLVBTMCrAhWUkAcFYNEaGexRmajjQyh",
+    "/dns/bootnode-v1-1.discovol.testnet.octopus.network/tcp/30333/ws/p2p/12D3KooWRfFR256VrJHTNq8Wwuq9po2J5tC9ryi8scGVF6iKqNNS",
+    "/dns/bootnode-v1-2.discovol.testnet.octopus.network/tcp/30333/ws/p2p/12D3KooWD6zpyN6z3ZqoHTDNNrUbevLVZRwYJ5rhrmB7ehkqAjrg",
+    "/dns/bootnode-v1-3.discovol.testnet.octopus.network/tcp/30333/ws/p2p/12D3KooWJ1bkfoNpCsftmL4CGCzNBL3FJYggtWJCq2HGtUJSjPrZ"
+  ],
   "telemetryEndpoints": null,
   "protocolId": "disc",
   "properties": {

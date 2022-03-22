@@ -55,6 +55,9 @@ std = [
   'pallet-register/std',
   'pallet-spread/std',
   'pallet-rif/std',
+  'pallet-invite/std',
+  'pallet-vesting/std',
+  "pallet-scheduler/std",
 ]
 
 [build-dependencies]
@@ -127,6 +130,10 @@ pallet-octopus-upward-messages = {git = 'https://github.com/octopus-network/octo
 
 pallet-utility = {git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.13", default-features = false}
 
+pallet-vesting =  {git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.13", default-features = false}
+
+pallet-scheduler =  {git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.13", default-features = false}
+
 [dependencies.pallet-rif]
 default-features = false
 path = '../pallets/rif'
@@ -138,3 +145,11 @@ path = '../pallets/register'
 [dependencies.pallet-spread]
 default-features = false
 path = '../pallets/spread'
+
+[dependencies.pallet-tool]
+default-features = false
+path = '../pallets/tool'
+
+[dependencies.pallet-invite]
+default-features = false
+path = '../pallets/invite'

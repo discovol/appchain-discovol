@@ -18,9 +18,11 @@ pub mod pallet {
 	#[pallet::config]
 	pub trait Config: frame_system::Config {
 		//
+
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
 
 		type Currency: Currency<Self::AccountId> + ReservableCurrency<Self::AccountId>;
+
 		//
 	}
 
@@ -31,11 +33,8 @@ pub mod pallet {
 		//
 		Initialized(T::AccountId),
 
-		Transfer(T::AccountId, u64),
-
-		// BatchCompleted(T::AccountId, Vec<T::AccountId>, Vec<u64>),
+		//BatchCompleted(Vec<T::AccountId>, Vec<T::AccountId>),
 		BatchCompleted(T::AccountId, u64),
-
 		//
 	}
 
@@ -48,8 +47,10 @@ pub mod pallet {
 	pub(super) type Sender<T: Config> = StorageMap<_, Blake2_128Concat, T::AccountId, u8, ValueQuery>;
 
 	#[pallet::storage]
-	#[pallet::getter(fn get_balance)]
-	pub(super) type Balances<T: Config> = StorageMap<_, Blake2_128Concat, T::AccountId, u64, ValueQuery>;
+	pub type Invites<T: Config> = StorageDoubleMap<_, Blake2_128Concat, T::AccountId, Blake2_128Concat, T::AccountId, T::BlockNumber, OptionQuery>;
+
+	#[pallet::storage]
+	pub type Inviteds<T: Config> = StorageMap<_, Blake2_128Concat, T::AccountId, (T::AccountId, T::BlockNumber), ValueQuery>;
 
 	#[pallet::pallet]
 	#[pallet::generate_store(pub (super) trait Store)]
@@ -67,11 +68,9 @@ pub mod pallet {
 
 		InvalidSender,
 
-		PayError,
+		TooFewInvites,
 
-		TooFewDests,
-
-		TooManyDests,
+		TooManyInvites,
 
 		InvalidArgument,
 		//
@@ -100,8 +99,8 @@ pub mod pallet {
 			//
 		}
 
-		#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(2,1))]
-		pub fn transfer(origin: OriginFor<T>, dest: T::AccountId, rif: u64) -> DispatchResultWithPostInfo {
+		#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(1,10))]
+		pub fn batch_insert(origin: OriginFor<T>, invites: Vec<T::AccountId>, inviteds: Vec<T::AccountId>) -> DispatchResultWithPostInfo {
 			//
 
 			ensure!(Self::is_init(), <Error<T>>::NotSender);
@@ -112,47 +111,30 @@ pub mod pallet {
 
 			ensure!(exist > 0, <Error<T>>::InvalidSender);
 
-			<Balances<T>>::insert(&dest, rif);
+			let invites_len = invites.len();
 
-			Self::deposit_event(Event::Transfer(dest, rif));
+			let inviteds_len = inviteds.len();
 
-			Ok(().into())
+			ensure!(invites_len == inviteds_len, <Error<T>>::InvalidArgument);
 
-			//
-		}
+			ensure!(invites_len > 0, <Error<T>>::TooFewInvites);
 
-		#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(1,2))]
-		pub fn batch_transfer(origin: OriginFor<T>, dests: Vec<T::AccountId>, rifs: Vec<u64>) -> DispatchResultWithPostInfo {
-			//
+			// ensure!(invites_len < 1001, <Error<T>>::TooManyInvites);
 
-			ensure!(Self::is_init(), <Error<T>>::NotSender);
+			let current_block = <frame_system::Pallet<T>>::block_number();
 
-			let sender = ensure_signed(origin)?;
-
-			let exist = Self::get_sender(&sender);
-
-			ensure!(exist > 0, <Error<T>>::InvalidSender);
-
-			let dests_len = dests.len();
-
-			let rifs_len = rifs.len();
-
-			ensure!(dests_len == rifs_len, <Error<T>>::InvalidArgument);
-
-			ensure!(dests_len > 0, <Error<T>>::TooFewDests);
-
-			// ensure!(dests_len < 1001, <Error<T>>::TooManyDests);
-
-			for i in 0..dests_len {
+			for i in 0..invites_len {
 				//
 
-				<Balances<T>>::insert(&dests[i], &rifs[i]);
+				<Invites<T>>::insert(&invites[i], &inviteds[i], &current_block);
+
+				<Inviteds<T>>::insert(&inviteds[i], (&invites[i], &current_block));
 
 				//
 			}
 
-			//Self::deposit_event(Event::BatchCompleted(sender, dests, rifs));
-			Self::deposit_event(Event::BatchCompleted(sender, dests_len as u64));
+			//Self::deposit_event(Event::BatchCompleted(invites, inviteds));
+			Self::deposit_event(Event::BatchCompleted(sender, invites_len as u64));
 
 			Ok(().into())
 
