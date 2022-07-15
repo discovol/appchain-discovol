@@ -57,6 +57,7 @@ pub mod pallet {
 
 	#[pallet::pallet]
 	#[pallet::generate_store(pub(super) trait Store)]
+	#[pallet::without_storage_info]
 	pub struct Pallet<T>(_);
 
 	#[pallet::storage]
@@ -65,11 +66,11 @@ pub mod pallet {
 
 	#[pallet::storage]
 	#[pallet::getter(fn get_fund)]
-	pub(super) type Fund<T: Config> = StorageValue<_, T::AccountId, ValueQuery>;
+	pub(super) type Fund<T: Config> = StorageValue<_, T::AccountId>;
 
 	#[pallet::storage]
 	#[pallet::getter(fn get_url)]
-	pub type RegisterUrls<T: Config> = StorageMap<_, Blake2_128Concat, Vec<u8>, (T::AccountId, T::BlockNumber, Vec<u8>, BalanceOf<T>, T::AccountId), ValueQuery>;
+	pub type RegisterUrls<T: Config> = StorageMap<_, Blake2_128Concat, Vec<u8>, (T::AccountId, T::BlockNumber, Vec<u8>, BalanceOf<T>, T::AccountId)>;
 
 	#[pallet::hooks]
 	impl<T: Config> Hooks<BlockNumberFor<T>> for Pallet<T> {}
@@ -111,7 +112,8 @@ pub mod pallet {
 
 			ensure!(Self::is_init(), <Error<T>>::NotFund);
 
-			let fund = Self::get_fund();
+			//let fund = Self::get_fund();
+			let fund = Self::get_fund().expect("Fund must initialized");
 
 			ensure!(!RegisterUrls::<T>::contains_key(&hash), <Error::<T>>::UrlRegistered);
 

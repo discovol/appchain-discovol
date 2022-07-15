@@ -1,7 +1,8 @@
 use appchain_barnacle_runtime::{
-	opaque::Block, opaque::SessionKeys, AccountId, BabeConfig, Balance, BalancesConfig,	
-	GenesisConfig, GrandpaConfig, ImOnlineConfig, OctopusAppchainConfig, OctopusLposConfig,
-	SessionConfig, Signature, SudoConfig, SystemConfig, DOLLARS, WASM_BINARY,
+	opaque::{Block, SessionKeys},
+	AccountId, BabeConfig, Balance, BalancesConfig, GenesisConfig, GrandpaConfig, ImOnlineConfig,
+	OctopusAppchainConfig, OctopusLposConfig, SessionConfig, Signature, SudoConfig, SystemConfig,
+	DOLLARS, WASM_BINARY,
 };
 use beefy_primitives::crypto::AuthorityId as BeefyId;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
@@ -34,10 +35,14 @@ pub struct Extensions {
 
 /// Specialized `ChainSpec`.
 pub type ChainSpec = sc_service::GenericChainSpec<GenesisConfig, Extensions>;
-/// Octopus testnet generator
+
 pub fn octopus_testnet_config() -> Result<ChainSpec, String> {
-	//ChainSpec::from_json_bytes(&include_bytes!("../../resources/testnet.json")[..])
-	ChainSpec::from_json_bytes(&include_bytes!("../../resources/discovolSpecRaw.json")[..])	
+	//ChainSpec::from_json_bytes(&include_bytes!("../../resources/octopus-testnet.json")[..])
+	ChainSpec::from_json_bytes(&include_bytes!("../../resources/discovolSpecRaw.json")[..])
+}
+
+pub fn octopus_mainnet_config() -> Result<ChainSpec, String> {
+	ChainSpec::from_json_bytes(&include_bytes!("../../resources/octopus-mainnet.json")[..])
 }
 
 fn session_keys(
@@ -111,6 +116,7 @@ pub fn development_config() -> Result<ChainSpec, String> {
 		None,
 		// Protocol ID
 		None,
+		None,
 		// Properties
 		None,
 		// Extensions
@@ -154,6 +160,7 @@ pub fn local_testnet_config() -> Result<ChainSpec, String> {
 		None,
 		// Properties
 		None,
+		None,
 		// Extensions
 		Default::default(),
 	))
@@ -190,17 +197,12 @@ fn testnet_genesis(
 	const STASH: Balance = 100 * 1_000_000_000_000_000_000; // 100 OCT with 18 decimals
 
 	GenesisConfig {
-
-		vesting: Default::default(),
-
-		scheduler: Default::default(),
-		
 		system: SystemConfig {
 			// Add Wasm runtime to storage.
 			code: wasm_binary.to_vec(),
 		},
 		balances: BalancesConfig {
-			balances: endowed_accounts.iter().cloned().map(|x| (x, ENDOWMENT)).collect(),
+			balances: endowed_accounts.iter().cloned().map(|k| (k, ENDOWMENT)).collect(),
 		},
 		session: SessionConfig {
 			keys: initial_authorities
@@ -220,6 +222,7 @@ fn testnet_genesis(
 				})
 				.collect::<Vec<_>>(),
 		},
+		sudo: SudoConfig { key: Some(root_key) },
 		babe: BabeConfig {
 			authorities: vec![],
 			epoch_config: Some(appchain_barnacle_runtime::BABE_GENESIS_EPOCH_CONFIG),
@@ -229,17 +232,12 @@ fn testnet_genesis(
 		transaction_payment: Default::default(),
 		beefy: Default::default(),
 		octopus_appchain: OctopusAppchainConfig {
-			anchor_contract: "".to_string(),
-			asset_id_by_name: vec![("usdc.testnet".to_string(), 0)],
+			anchor_contract: "octopus-anchor.testnet".to_string(),
+			asset_id_by_name: vec![("usdn.testnet".to_string(), 0)],
 			validators,
 			premined_amount: 1024 * DOLLARS,
 		},
 		octopus_lpos: OctopusLposConfig { era_payout: 2 * DOLLARS, ..Default::default() },
 		octopus_assets: Default::default(),
-		sudo: SudoConfig {
-			// Assign network admin rights.
-			key: root_key,
-		}
-
 	}
 }

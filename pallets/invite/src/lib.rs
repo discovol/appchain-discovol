@@ -50,7 +50,8 @@ pub mod pallet {
 	pub type Invites<T: Config> = StorageDoubleMap<_, Blake2_128Concat, T::AccountId, Blake2_128Concat, T::AccountId, T::BlockNumber, OptionQuery>;
 
 	#[pallet::storage]
-	pub type Inviteds<T: Config> = StorageMap<_, Blake2_128Concat, T::AccountId, (T::AccountId, T::BlockNumber), ValueQuery>;
+	// pub type Inviteds<T: Config> = StorageMap<_, Blake2_128Concat, T::AccountId, (T::AccountId, T::BlockNumber), ValueQuery>;
+	pub type Inviteds<T: Config> = StorageMap<_, Blake2_128Concat, T::AccountId, (T::AccountId, T::BlockNumber)>;
 
 	#[pallet::pallet]
 	#[pallet::generate_store(pub (super) trait Store)]
