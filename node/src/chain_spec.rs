@@ -6,7 +6,7 @@ use appchain_barnacle_runtime::{
 };
 use beefy_primitives::crypto::AuthorityId as BeefyId;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
-use pallet_octopus_appchain::AuthorityId as OctopusId;
+use pallet_octopus_appchain::sr25519::AuthorityId as OctopusId; //use pallet_octopus_appchain::AuthorityId as OctopusId;
 use sc_chain_spec::ChainSpecExtension;
 use sc_service::ChainType;
 use serde::{Deserialize, Serialize};
@@ -197,6 +197,11 @@ fn testnet_genesis(
 	const STASH: Balance = 100 * 1_000_000_000_000_000_000; // 100 OCT with 18 decimals
 
 	GenesisConfig {
+
+		// scheduler: Default::default(),
+
+		vesting: Default::default(),	
+
 		system: SystemConfig {
 			// Add Wasm runtime to storage.
 			code: wasm_binary.to_vec(),
@@ -233,7 +238,7 @@ fn testnet_genesis(
 		beefy: Default::default(),
 		octopus_appchain: OctopusAppchainConfig {
 			anchor_contract: "octopus-anchor.testnet".to_string(),
-			asset_id_by_name: vec![("usdn.testnet".to_string(), 0)],
+			asset_id_by_token_id: vec![("usdn.testnet".to_string(), 0)], //asset_id_by_name: vec![("usdn.testnet".to_string(), 0)],
 			validators,
 			premined_amount: 1024 * DOLLARS,
 		},

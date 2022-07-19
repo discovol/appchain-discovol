@@ -45,6 +45,9 @@ use frame_system::{
 	limits::{BlockLength, BlockWeights},
 	EnsureRoot,
 };
+
+pub use frame_support::traits::EqualPrivilegeOnly;
+
 pub use pallet_balances::Call as BalancesCall;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use pallet_mmr_primitives as mmr;
@@ -58,9 +61,9 @@ use static_assertions::const_assert;
 /// Import the template pallet.
 pub use pallet_template;
 
-// pub use pallet_scheduler;
+pub use pallet_scheduler;
 
-// pub use pallet_vesting;
+pub use pallet_vesting;
 
 pub use pallet_register;
 
@@ -594,7 +597,7 @@ pub struct OctopusAppCrypto;
 impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature>
 	for OctopusAppCrypto
 {
-	type RuntimeAppPublic = pallet_octopus_appchain::AuthorityId;
+	type RuntimeAppPublic = pallet_octopus_appchain::sr25519::AuthorityId; //type RuntimeAppPublic = pallet_octopus_appchain::AuthorityId;
 	type GenericSignature = sp_core::sr25519::Signature;
 	type GenericPublic = sp_core::sr25519::Public;
 }
@@ -608,7 +611,9 @@ parameter_types! {
 }
 
 impl pallet_octopus_appchain::Config for Runtime {
-	type AuthorityId = OctopusAppCrypto;
+	//type AuthorityId = OctopusAppCrypto;
+	type AuthorityId = pallet_octopus_appchain::sr25519::AuthorityId;
+	type AppCrypto = OctopusAppCrypto;
 	type Event = Event;
 	type Call = Call;
 	type PalletId = OctopusAppchainPalletId;
@@ -622,7 +627,7 @@ impl pallet_octopus_appchain::Config for Runtime {
 	type Assets = OctopusAssets;
 	type AssetBalance = AssetBalance;
 	type AssetId = AssetId;
-	type AssetIdByName = OctopusAppchain;
+	type AssetIdByTokenId = OctopusAppchain; //type AssetIdByName = OctopusAppchain;
 	type GracePeriod = GracePeriod;
 	type UnsignedPriority = UnsignedPriority;
 	type RequestEventLimit = RequestEventLimit;
@@ -668,35 +673,35 @@ impl pallet_template::Config for Runtime {
 	type Event = Event;
 }
 
-// parameter_types! {
-// 	pub MaximumSchedulerWeight: Weight = NORMAL_DISPATCH_RATIO * RuntimeBlockWeights::get().max_block;
-// 	pub const MaxScheduledPerBlock: u32 = 50;
-// }
+parameter_types! {
+	pub MaximumSchedulerWeight: Weight = NORMAL_DISPATCH_RATIO * RuntimeBlockWeights::get().max_block;
+	pub const MaxScheduledPerBlock: u32 = 50;
+}
 
-// impl pallet_scheduler::Config for Runtime {
-// 	type Call = Call;
-// 	type Event = Event;
-// 	type MaximumWeight = MaximumSchedulerWeight;
-// 	type MaxScheduledPerBlock = MaxScheduledPerBlock;
-// 	type Origin = Origin;
-// 	type OriginPrivilegeCmp = EqualPrivilegeOnly;
-// 	type PalletsOrigin = OriginCaller;
-// 	type ScheduleOrigin = EnsureRoot<AccountId>;
-// 	type WeightInfo = ();
-// 	type PreimageProvider = ();
-// 	type NoPreimagePostponement = ();
-// }
+impl pallet_scheduler::Config for Runtime {
+	type Call = Call;
+	type Event = Event;
+	type MaximumWeight = MaximumSchedulerWeight;
+	type MaxScheduledPerBlock = MaxScheduledPerBlock;
+	type Origin = Origin;
+	type OriginPrivilegeCmp = EqualPrivilegeOnly;
+	type PalletsOrigin = OriginCaller;
+	type ScheduleOrigin = EnsureRoot<AccountId>;
+	type WeightInfo = ();
+	type PreimageProvider = ();
+	type NoPreimagePostponement = ();
+}
 
-// impl pallet_vesting::Config for Runtime {
-// 	type Event = Event;
-// 	type Currency = Balances;
-// 	type BlockNumberToBalance = ConvertInto;
-// 	type MinVestedTransfer = ();
-// 	type WeightInfo = pallet_vesting::weights::SubstrateWeight<Runtime>;
-// 	// `VestingInfo` encode length is 36bytes. 28 schedules gets encoded as 1009 bytes, which is the
-// 	// highest number of schedules that encodes less than 2^10.
-// 	const MAX_VESTING_SCHEDULES: u32 = 28;
-// }
+impl pallet_vesting::Config for Runtime {
+	type Event = Event;
+	type Currency = Balances;
+	type BlockNumberToBalance = ConvertInto;
+	type MinVestedTransfer = ();
+	type WeightInfo = pallet_vesting::weights::SubstrateWeight<Runtime>;
+	// `VestingInfo` encode length is 36bytes. 28 schedules gets encoded as 1009 bytes, which is the
+	// highest number of schedules that encodes less than 2^10.
+	const MAX_VESTING_SCHEDULES: u32 = 28;
+}
 
 impl pallet_register::Config for Runtime {
 	type Event = Event;
@@ -761,9 +766,9 @@ construct_runtime!(
 		RifModule: pallet_rif::{Pallet, Call, Storage, Event<T>},
 		InviteModule: pallet_invite,
 		ToolModule: pallet_tool,
-		// Scheduler: pallet_scheduler,
+		Scheduler: pallet_scheduler,
 		// Uniques: pallet_uniques,
-		// Vesting: pallet_vesting,
+		Vesting: pallet_vesting,
 				
 	}
 );
