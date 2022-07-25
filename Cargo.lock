@@ -128,6 +128,7 @@ dependencies = [
  "pallet-randomness-collective-flip",
  "pallet-register",
  "pallet-rif",
+ "pallet-scheduler",
  "pallet-session",
  "pallet-spread",
  "pallet-sudo",
@@ -138,6 +139,7 @@ dependencies = [
  "pallet-transaction-payment-rpc-runtime-api",
  "pallet-uniques",
  "pallet-utility",
+ "pallet-vesting",
  "parity-scale-codec",
  "scale-info",
  "sp-api",
@@ -4447,6 +4449,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-scheduler"
+version = "4.0.0-dev"
+source = "git+https://github.com/paritytech/substrate.git?branch=polkadot-v0.9.18#fc3fd073d3a0acf9933c3994b660ebd7b5833f65"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-session"
 version = "4.0.0-dev"
 source = "git+https://github.com/paritytech/substrate.git?branch=polkadot-v0.9.18#fc3fd073d3a0acf9933c3994b660ebd7b5833f65"
@@ -4618,6 +4636,20 @@ dependencies = [
  "scale-info",
  "sp-core",
  "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-vesting"
+version = "4.0.0-dev"
+source = "git+https://github.com/paritytech/substrate.git?branch=polkadot-v0.9.18#fc3fd073d3a0acf9933c3994b660ebd7b5833f65"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec",
+ "scale-info",
  "sp-runtime",
  "sp-std",
 ]
