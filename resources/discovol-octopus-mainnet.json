@@ -38,7 +38,7 @@
         "balances": [
           [
             "5EbzRC8dTLoeNSFJfsBsXwbjdYr5DFAf5VNgQx2UZvcpzzmj",
-            49995000000000000000000
+            49994946000000000000000
           ],
           [
             "5GpptxtRvgo8cy2JQKxZxLtZW74pEFXZiLc9dpZJfVKMA3BU",
@@ -59,7 +59,24 @@
           [
             "5GRApQjbpnY4FWDcX7CTWyvfypFQ1BLCSNu72FsV6tCQwR5h",
             1000000000000000000
-          ]
+          ],
+
+          [
+            "5D2xwcEXn9j2jyYoK62FUdiyx9PtuqDHTBgToDMAutaT1zNY",
+            51000000000000000
+          ],
+          [
+            "5EWNV5YtijPrmYN1HKY46BX5H7X419Ck2QT3hjdtF6HbHu1s",
+            1000000000000000
+          ],
+          [
+            "5ECi9bhgzJLFTDmgH18C4QnYxQTFMXToKeS9eEo4RTAhfQx1",
+            1000000000000000
+          ],
+          [
+            "5H3DSngoxqBKs1dj5murrrHjf3vq6xiq7cZTUCfq5onyNRVZ",
+            1000000000000000
+          ]          
 
         ]
       },
