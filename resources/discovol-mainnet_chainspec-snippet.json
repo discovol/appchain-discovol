@@ -1,0 +1,104 @@
+{
+  "bootNodes": [
+    "/dns/bootnode-v1-0.discovol.mainnet.octopus.network/tcp/30333/ws/p2p/12D3KooWFZMVDzKr2TqaU1VPCFuKednyst12EkUuSnqyUcJWhKQF",
+    "/dns/bootnode-v1-1.discovol.mainnet.octopus.network/tcp/30333/ws/p2p/12D3KooWBPobQTw1tA3VEEUZn1k3tevkZwAeDqUANq2XnoSUdU88",
+    "/dns/bootnode-v1-2.discovol.mainnet.octopus.network/tcp/30333/ws/p2p/12D3KooWR3fKLtRk8P1RfntthjBMz7mgR7sEQrzRsgDvujeTEy3o",
+    "/dns/bootnode-v1-3.discovol.mainnet.octopus.network/tcp/30333/ws/p2p/12D3KooWBptjJWeX5wQpAGa7oQekqBZK18SSYXJLSPZnmbyfdJXs"
+  ],
+  "genesis": {
+    "runtime": {
+      "balances": {
+        "balances": [
+          [
+            "5D2xwcEXn9j2jyYoK62FUdiyx9PtuqDHTBgToDMAutaT1zNY",
+            510000000000000000000
+          ],
+          [
+            "5EWNV5YtijPrmYN1HKY46BX5H7X419Ck2QT3hjdtF6HbHu1s",
+            10000000000000000000
+          ],
+          [
+            "5ECi9bhgzJLFTDmgH18C4QnYxQTFMXToKeS9eEo4RTAhfQx1",
+            10000000000000000000
+          ],
+          [
+            "5H3DSngoxqBKs1dj5murrrHjf3vq6xiq7cZTUCfq5onyNRVZ",
+            10000000000000000000
+          ]
+        ]
+      },
+      "octopusAppchain": {
+        "validators": [
+          [
+            "5D2xwcEXn9j2jyYoK62FUdiyx9PtuqDHTBgToDMAutaT1zNY",
+            50000000000000000000000
+          ],
+          [
+            "5EWNV5YtijPrmYN1HKY46BX5H7X419Ck2QT3hjdtF6HbHu1s",
+            50000000000000000000000
+          ],
+          [
+            "5ECi9bhgzJLFTDmgH18C4QnYxQTFMXToKeS9eEo4RTAhfQx1",
+            50000000000000000000000
+          ],
+          [
+            "5H3DSngoxqBKs1dj5murrrHjf3vq6xiq7cZTUCfq5onyNRVZ",
+            50000000000000000000000
+          ]
+        ]
+      },
+      "session": {
+        "keys": [
+          [
+            "5D2xwcEXn9j2jyYoK62FUdiyx9PtuqDHTBgToDMAutaT1zNY",
+            "5D2xwcEXn9j2jyYoK62FUdiyx9PtuqDHTBgToDMAutaT1zNY",
+            {
+              "babe": "5CM3cFQMxW2fWts4aY1zjWi1bDFuCTQdazT8aiWq6AUdU4mC",
+              "grandpa": "5EB3K29jiP5AM6MLuC8qmcq2yKVYaD2VnmAdTXJ8YMEdnh8L",
+              "im_online": "5CaKzosZHd3zGEeRnYz6d472fC7gsF8u8AZib48Ef4feQ6eg",
+              "beefy": "KW7zBDYb63wwtwBD9d9vrQyNzsoFobmsRCn45ewyEFTJgA17h",
+              "octopus": "5HQAgUsgWP9VL3zCpyG58ax6ALoxkwafuYvMMpDrSiAxePjU"
+            }
+          ],
+          [
+            "5EWNV5YtijPrmYN1HKY46BX5H7X419Ck2QT3hjdtF6HbHu1s",
+            "5EWNV5YtijPrmYN1HKY46BX5H7X419Ck2QT3hjdtF6HbHu1s",
+            {
+              "babe": "5CUh7W3o9HXwPNQHqALx113LU6WXACER8Hm5F3TzDXjgdphJ",
+              "grandpa": "5D5kxuzazo6NwRjPGgGC2mu2gc38ywTAt64bHuTP3P498hyS",
+              "im_online": "5G96PEApAesnauqtJW7UZBHQQDWQz7JCuMjKMVQafRKvcKmo",
+              "beefy": "KW6ySMBqgV2sifrAEU15BFS22KhR6gwa19TTco7ravyrR5vyE",
+              "octopus": "5HostCzGiYKuzaPHazw3kSEiQg11EHHkX8yGTzkFkyy86wgt"
+            }
+          ],
+          [
+            "5ECi9bhgzJLFTDmgH18C4QnYxQTFMXToKeS9eEo4RTAhfQx1",
+            "5ECi9bhgzJLFTDmgH18C4QnYxQTFMXToKeS9eEo4RTAhfQx1",
+            {
+              "babe": "5F7AL5UcttXRgFLEZeFceBpqCBLW6sHnJna2wKb5VKVY9Hum",
+              "grandpa": "5EnQ8q5MkKUaETWVvaFov5CufRyCTB6f8rAQzRq3mRDoiwHf",
+              "im_online": "5EUQnRAuEdaA1nkKFvTbC6ptuiPmhMDK9usEMgPJ8eHQcmin",
+              "beefy": "KWAJFFFdojyUNpD389EJdvqqHaW88TYE6XeW5gWEd69PTJXE8",
+              "octopus": "5H99hNmPLTD9dzDdyWvnSRVXAW73NTinFKivGwJGz6zqWKQq"
+            }
+          ],
+          [
+            "5H3DSngoxqBKs1dj5murrrHjf3vq6xiq7cZTUCfq5onyNRVZ",
+            "5H3DSngoxqBKs1dj5murrrHjf3vq6xiq7cZTUCfq5onyNRVZ",
+            {
+              "babe": "5CfQJf6JE6UCWQXQa7aGgB3mfFqmKdh1BpeAFzhGpzaqr3bC",
+              "grandpa": "5CsdeG5Ye1X5Snw5EY8dH8EprfXRCsYbMfj4nTptdnqJtrry",
+              "im_online": "5FxiZHxB6ntgtpwpFqJvnK494wnNFSeP45YVoHCTxVWDzn4Y",
+              "beefy": "KWC9c7M3SdQFJHKWWuvbyaWjPA9nvZCvhQhqKUkquUQi5UAYK",
+              "octopus": "5G25Zuvk6MPc4uekTV7mcKyuyXCWPwwStjVskkPZy412tRws"
+            }
+          ]
+        ]
+      },
+      "sudo": {
+        "key": "5D2xwcEXn9j2jyYoK62FUdiyx9PtuqDHTBgToDMAutaT1zNY"
+      },
+      "anchorContract": "discovol.octopus-registry.near"
+    }
+  }
+}

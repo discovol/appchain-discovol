@@ -1,0 +1,97 @@
+{
+  "genesis": {
+    "runtime": {
+      "balances": {
+        "balances": [
+          [
+            "5GNCs3EQYyQLxZ42KxAimgqzXP8BM3Kb8Mhj7t2vCqwFDDT9",
+            51000000000000000
+          ],
+          [
+            "5EefJTVB6vAPj3cKQdwyppPJvCgLzptgdF82rGNKGNNoK9oD",
+            1000000000000000
+          ],
+          [
+            "5CGDJ4oXuiQERkHJ9phomyoJa9qa6iovxvzUnWMk9cvb3Pd9",
+            1000000000000000
+          ],
+          [
+            "5DjvCxQwknVnUqYrXionXjbG4DxhnEaJq6smffknRJ6RQWps",
+            1000000000000000
+          ]
+        ]
+      },
+      "octopusAppchain": {
+        "validators": [
+          [
+            "5GNCs3EQYyQLxZ42KxAimgqzXP8BM3Kb8Mhj7t2vCqwFDDT9",
+            10000000000000000000000
+          ],
+          [
+            "5EefJTVB6vAPj3cKQdwyppPJvCgLzptgdF82rGNKGNNoK9oD",
+            10000000000000000000000
+          ],
+          [
+            "5CGDJ4oXuiQERkHJ9phomyoJa9qa6iovxvzUnWMk9cvb3Pd9",
+            10000000000000000000000
+          ],
+          [
+            "5DjvCxQwknVnUqYrXionXjbG4DxhnEaJq6smffknRJ6RQWps",
+            10000000000000000000000
+          ]
+        ]
+      },
+      "session": {
+        "keys": [
+          [
+            "5GNCs3EQYyQLxZ42KxAimgqzXP8BM3Kb8Mhj7t2vCqwFDDT9",
+            "5GNCs3EQYyQLxZ42KxAimgqzXP8BM3Kb8Mhj7t2vCqwFDDT9",
+            {
+              "babe": "5FntV8n3fbM7j2bjKPeiHCuD5B1Eqm2gtWrcZyJWjGdmJ3Jb",
+              "grandpa": "5CFZAWhvJ5dZWhqW5uzNsGxw19cNv85SQuMNFL6x3UJ6TeTi",
+              "im_online": "5E9hpYqbSAKNQ38Jb8mHyHdXybBzGM2VBqRhhwLyyp13p7MH",
+              "beefy": "KW5SZW6dLwAKGsmiD19so5gr5JBAoccwtKXX2WZX6XEHTrsfu",
+              "octopus": "5GKGF3bjBhajbLZX8GFus6yCphkC7AGLGAuKqg11tmduGcbb"
+            }
+          ],
+          [
+            "5EefJTVB6vAPj3cKQdwyppPJvCgLzptgdF82rGNKGNNoK9oD",
+            "5EefJTVB6vAPj3cKQdwyppPJvCgLzptgdF82rGNKGNNoK9oD",
+            {
+              "babe": "5EC1STnDAnRjrwoZBVckyjp2rAkYUUfM8Hk5YVrRXasFGRfh",
+              "grandpa": "5F1tm9HEW4Dwvz9tpqMtUCEkARCqbZ4KcUTvob3uVtAcGoS9",
+              "im_online": "5FnttkHv9XzCbd1CijaLWLuvo3mmCezi6QW3Fi29suLnTgaa",
+              "beefy": "KWDsypmbdK5ThfyPDoPmY2VyY39nZb7DG1TwD8WYaheZaAagx",
+              "octopus": "5HYgjFjazFmf8MqsKufDvc3UpLGu1gQkbcpMShbsqeygZ3zj"
+            }
+          ],
+          [
+            "5CGDJ4oXuiQERkHJ9phomyoJa9qa6iovxvzUnWMk9cvb3Pd9",
+            "5CGDJ4oXuiQERkHJ9phomyoJa9qa6iovxvzUnWMk9cvb3Pd9",
+            {
+              "babe": "5CWwkGEsNYFCW9fwnxKmNATqwg62yHqJEaUN1kZQJH4gqiEG",
+              "grandpa": "5Fcj2VaosUfeurLrEGqeJkQVsnCgdC9H9d3Fs5cnJhyMJZMM",
+              "im_online": "5Fbqvx6e24JYWnCHjMqYAgn8YiiBBQbDEwDh9z299Nqoj5Rw",
+              "beefy": "KWABNE8TQmWKP3rXQfaYrhXPe5XFq4bhyAEkZc1DthSVxAgnH",
+              "octopus": "5DP2ZW5pAt2zijF3vvv6UugYq7SnmVJxdiN49HzWpTmBLbk4"
+            }
+          ],
+          [
+            "5DjvCxQwknVnUqYrXionXjbG4DxhnEaJq6smffknRJ6RQWps",
+            "5DjvCxQwknVnUqYrXionXjbG4DxhnEaJq6smffknRJ6RQWps",
+            {
+              "babe": "5HNbABvNqUkaDSmSe4FwC7FZbgkERdkMaHqZvmvNiXR5Prep",
+              "grandpa": "5EgioNiVjS2k96f6oo4cbZdc5tKYT1MGdAR51rpAWVcpnVTH",
+              "im_online": "5CXn6ZqAAmabipoXxWesGjkxVrQ3QD1FeNZ7LoEnK86MnFjM",
+              "beefy": "KWDif854jFCdsQw4z4axrux9p4Q4z7LDDFSm2arAeRnzng9Wz",
+              "octopus": "5FnUVKVwzhvNgPHtoEeXm7UYg2V7bQEZWdmkxG1MuJ5kZssx"
+            }
+          ]
+        ]
+      },
+      "sudo": {
+        "key": "5GNCs3EQYyQLxZ42KxAimgqzXP8BM3Kb8Mhj7t2vCqwFDDT9"
+      }
+    }
+  }
+}

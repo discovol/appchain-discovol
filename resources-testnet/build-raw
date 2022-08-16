@@ -1,0 +1,1 @@
+~/discovol/target/debug/appchain-discovol build-spec --chain=discovolSpec.json --raw --disable-default-bootnode > discovolSpecRaw.json

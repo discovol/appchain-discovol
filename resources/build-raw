@@ -1,0 +1,1 @@
+~/discovol/target/debug/appchain-discovol build-spec --chain=discovol-octopus-mainnet.json --raw --disable-default-bootnode > octopus-mainnet.json
