@@ -769,7 +769,7 @@ construct_runtime!(
 		Scheduler: pallet_scheduler,
 		// Uniques: pallet_uniques,
 		Vesting: pallet_vesting,
-				
+
 	}
 );
 
