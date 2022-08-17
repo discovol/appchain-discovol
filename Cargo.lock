@@ -125,6 +125,7 @@ dependencies = [
  "pallet-octopus-appchain",
  "pallet-octopus-lpos",
  "pallet-octopus-upward-messages",
+ "pallet-offences",
  "pallet-randomness-collective-flip",
  "pallet-register",
  "pallet-rif",
@@ -4327,7 +4328,7 @@ dependencies = [
 [[package]]
 name = "pallet-octopus-appchain"
 version = "4.0.0-pre.0"
-source = "git+https://github.com/octopus-network/octopus-pallets.git?branch=release-v0.9.18#929324c1c53d4353bbd89aa04e114c50a4f291fd"
+source = "git+https://github.com/octopus-network/octopus-pallets.git?tag=v0.9.18-2#bd323368e679c41b2ed3eb0ee1f8eb374aa0955c"
 dependencies = [
  "base64",
  "borsh",
@@ -4352,7 +4353,7 @@ dependencies = [
 [[package]]
 name = "pallet-octopus-lpos"
 version = "4.0.0-pre.0"
-source = "git+https://github.com/octopus-network/octopus-pallets.git?branch=release-v0.9.18#929324c1c53d4353bbd89aa04e114c50a4f291fd"
+source = "git+https://github.com/octopus-network/octopus-pallets.git?tag=v0.9.18-2#bd323368e679c41b2ed3eb0ee1f8eb374aa0955c"
 dependencies = [
  "borsh",
  "frame-benchmarking",
@@ -4374,7 +4375,7 @@ dependencies = [
 [[package]]
 name = "pallet-octopus-support"
 version = "4.0.0-pre.0"
-source = "git+https://github.com/octopus-network/octopus-pallets.git?branch=release-v0.9.18#929324c1c53d4353bbd89aa04e114c50a4f291fd"
+source = "git+https://github.com/octopus-network/octopus-pallets.git?tag=v0.9.18-2#bd323368e679c41b2ed3eb0ee1f8eb374aa0955c"
 dependencies = [
  "borsh",
  "frame-support",
@@ -4387,7 +4388,7 @@ dependencies = [
 [[package]]
 name = "pallet-octopus-upward-messages"
 version = "4.0.0-pre.0"
-source = "git+https://github.com/octopus-network/octopus-pallets.git?branch=release-v0.9.18#929324c1c53d4353bbd89aa04e114c50a4f291fd"
+source = "git+https://github.com/octopus-network/octopus-pallets.git?tag=v0.9.18-2#bd323368e679c41b2ed3eb0ee1f8eb374aa0955c"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -4399,6 +4400,23 @@ dependencies = [
  "sp-core",
  "sp-io",
  "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-offences"
+version = "4.0.0-dev"
+source = "git+https://github.com/paritytech/substrate.git?branch=polkadot-v0.9.18#fc3fd073d3a0acf9933c3994b660ebd7b5833f65"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "log",
+ "pallet-balances",
+ "parity-scale-codec",
+ "scale-info",
+ "serde",
+ "sp-runtime",
+ "sp-staking",
  "sp-std",
 ]
 
