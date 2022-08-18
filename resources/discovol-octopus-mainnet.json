@@ -38,7 +38,7 @@
         "balances": [
           [
             "5EbzRC8dTLoeNSFJfsBsXwbjdYr5DFAf5VNgQx2UZvcpzzmj",
-            49994946000000000000000
+            39994946000000000000000
           ],
           [
             "5GpptxtRvgo8cy2JQKxZxLtZW74pEFXZiLc9dpZJfVKMA3BU",
@@ -83,7 +83,7 @@
       "transactionPayment": null,
       "octopusAppchain": {
         "anchorContract": "discovol.octopus-registry.near",
-        "preminedAmount": 90000000000000000000000,
+        "preminedAmount": 50000000000000000000000,
         "assetIdByTokenId": [],
         "validators": [
           [
