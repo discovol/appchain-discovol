@@ -17,7 +17,7 @@ use sc_finality_grandpa::{
 };
 use sc_finality_grandpa_rpc::GrandpaRpcHandler;
 use sc_rpc::SubscriptionTaskExecutor;
-pub  use sc_rpc_api::DenyUnsafe;
+pub use sc_rpc_api::DenyUnsafe;
 use sc_transaction_pool_api::TransactionPool;
 use sp_api::ProvideRuntimeApi;
 use sp_block_builder::BlockBuilder;
@@ -27,7 +27,7 @@ use sp_consensus_babe::BabeApi;
 use sp_keystore::SyncCryptoStorePtr;
 
 /// Extra dependencies for BABE.
-pub  struct BabeDeps {
+pub struct BabeDeps {
 	/// BABE protocol config.
 	pub babe_config: Config,
 	/// BABE pending epoch changes.
@@ -37,7 +37,7 @@ pub  struct BabeDeps {
 }
 
 /// Extra dependencies for GRANDPA
-pub  struct GrandpaDeps<B> {
+pub struct GrandpaDeps<B> {
 	/// Voting round info.
 	pub shared_voter_state: SharedVoterState,
 	/// Authority set info.
@@ -52,7 +52,7 @@ pub  struct GrandpaDeps<B> {
 
 use beefy_gadget::notification::{BeefyBestBlockStream, BeefySignedCommitmentStream};
 /// Dependencies for BEEFY
-pub  struct BeefyDeps {
+pub struct BeefyDeps {
 	/// Receives notifications about signed commitment events from BEEFY.
 	pub beefy_commitment_stream: BeefySignedCommitmentStream<Block>,
 	/// Receives notifications about best block events from BEEFY.
@@ -62,7 +62,7 @@ pub  struct BeefyDeps {
 }
 
 /// Full client dependencies.
-pub  struct FullDeps<C, P, SC, B> {
+pub struct FullDeps<C, P, SC, B> {
 	/// The client instance to use.
 	pub client: Arc<C>,
 	/// Transaction pool instance.
@@ -82,10 +82,10 @@ pub  struct FullDeps<C, P, SC, B> {
 }
 
 /// A IO handler that uses all Full RPC extensions.
-pub  type IoHandler = jsonrpc_core::IoHandler<sc_rpc::Metadata>;
+pub type IoHandler = jsonrpc_core::IoHandler<sc_rpc::Metadata>;
 
 /// Instantiate all Full RPC extensions.
-pub  fn create_full<C, P, SC, B>(
+pub fn create_full<C, P, SC, B>(
 	deps: FullDeps<C, P, SC, B>,
 ) -> Result<jsonrpc_core::IoHandler<sc_rpc_api::Metadata>, Box<dyn std::error::Error + Send + Sync>>
 where

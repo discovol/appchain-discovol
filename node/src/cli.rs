@@ -1,7 +1,7 @@
 use sc_cli::RunCmd;
 
 #[derive(Debug, clap::Parser)]
-pub  struct Cli {
+pub struct Cli {
 	#[clap(subcommand)]
 	pub subcommand: Option<Subcommand>,
 
@@ -10,7 +10,7 @@ pub  struct Cli {
 }
 
 #[derive(Debug, clap::Subcommand)]
-pub  enum Subcommand {
+pub enum Subcommand {
 	/// Key management cli utilities
 	#[clap(subcommand)]
 	Key(sc_cli::KeySubcommand),
