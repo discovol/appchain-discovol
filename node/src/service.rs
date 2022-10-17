@@ -14,7 +14,7 @@ use sp_runtime::traits::Block as BlockT;
 use std::sync::Arc;
 
 // Our native executor instance.
-pub struct ExecutorDispatch;
+pub  struct ExecutorDispatch;
 
 impl sc_executor::NativeExecutionDispatch for ExecutorDispatch {
 	/// Only enable the benchmarking host functions when we actually want to benchmark.
@@ -34,7 +34,7 @@ impl sc_executor::NativeExecutionDispatch for ExecutorDispatch {
 }
 
 /// The full client type definition.
-pub type FullClient =
+pub  type FullClient =
 	sc_service::TFullClient<Block, RuntimeApi, NativeElseWasmExecutor<ExecutorDispatch>>;
 type FullBackend = sc_service::TFullBackend<Block>;
 type FullSelectChain = sc_consensus::LongestChain<FullBackend, Block>;
@@ -42,10 +42,10 @@ type FullGrandpaBlockImport =
 	grandpa::GrandpaBlockImport<FullBackend, Block, FullClient, FullSelectChain>;
 
 /// The transaction pool type defintion.
-pub type TransactionPool = sc_transaction_pool::FullPool<Block, FullClient>;
+pub  type TransactionPool = sc_transaction_pool::FullPool<Block, FullClient>;
 
 /// Creates a new partial node.
-pub fn new_partial(
+pub  fn new_partial(
 	config: &Configuration,
 ) -> Result<
 	sc_service::PartialComponents<
@@ -229,7 +229,7 @@ pub fn new_partial(
 }
 
 /// Result of [`new_full_base`].
-pub struct NewFullBase {
+pub  struct NewFullBase {
 	/// The task manager of the node.
 	pub task_manager: TaskManager,
 	/// The client instance of the node.
@@ -243,7 +243,7 @@ pub struct NewFullBase {
 }
 
 /// Creates a full service from the configuration.
-pub fn new_full_base(
+pub  fn new_full_base(
 	mut config: Configuration,
 	with_startup_data: impl FnOnce(
 		&sc_consensus_babe::BabeBlockImport<Block, FullClient, FullGrandpaBlockImport>,
@@ -459,6 +459,6 @@ pub fn new_full_base(
 }
 
 /// Builds a new service for a full client.
-pub fn new_full(config: Configuration) -> Result<TaskManager, ServiceError> {
+pub  fn new_full(config: Configuration) -> Result<TaskManager, ServiceError> {
 	new_full_base(config, |_, _| ()).map(|NewFullBase { task_manager, .. }| task_manager)
 }

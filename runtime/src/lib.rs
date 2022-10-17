@@ -30,7 +30,7 @@ use sp_version::RuntimeVersion;
 use beefy_primitives::{crypto::AuthorityId as BeefyId, mmr::MmrLeafVersion};
 use codec::Encode;
 use frame_support::PalletId;
-pub use frame_support::{
+pub  use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
 		ConstU128, ConstU16, ConstU32, ConstU8, KeyOwnerProofSystem, Randomness, StorageInfo,
@@ -46,62 +46,62 @@ use frame_system::{
 	EnsureRoot,
 };
 
-pub use frame_support::traits::EqualPrivilegeOnly;
+pub  use frame_support::traits::EqualPrivilegeOnly;
 
-pub use pallet_balances::Call as BalancesCall;
+pub  use pallet_balances::Call as BalancesCall;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use pallet_mmr_primitives as mmr;
 use pallet_session::historical as pallet_session_historical;
-pub use pallet_timestamp::Call as TimestampCall;
+pub  use pallet_timestamp::Call as TimestampCall;
 use pallet_transaction_payment::CurrencyAdapter;
 #[cfg(any(feature = "std", test))]
-pub use sp_runtime::BuildStorage;
+pub  use sp_runtime::BuildStorage;
 use static_assertions::const_assert;
 
 /// Import the template pallet.
-pub use pallet_template;
+pub  use pallet_template;
 
-pub use pallet_scheduler;
+pub  use pallet_scheduler;
 
-pub use pallet_vesting;
+pub  use pallet_vesting;
 
-pub use pallet_register;
+pub  use pallet_register;
 
-pub use pallet_spread;
+pub  use pallet_spread;
 
-pub use pallet_rif;
+pub  use pallet_rif;
 
-pub use pallet_tool;
+pub  use pallet_tool;
 
-pub use pallet_invite;
+pub  use pallet_invite;
 
 /// An index to a block.
-pub type BlockNumber = u32;
+pub  type BlockNumber = u32;
 
 /// Alias to 512-bit hash when used in the context of a transaction signature on the chain.
-pub type Signature = MultiSignature;
+pub  type Signature = MultiSignature;
 
 /// Some way of identifying an account on the chain. We intentionally make it equivalent
 /// to the public key of our transaction signing scheme.
-pub type AccountId = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId;
+pub  type AccountId = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId;
 
 /// Balance of an account.
-pub type Balance = u128;
+pub  type Balance = u128;
 
 /// Type used for expressing timestamp.
-pub type Moment = u64;
+pub  type Moment = u64;
 
 /// Index of a transaction in the chain.
-pub type Index = u32;
+pub  type Index = u32;
 
 /// A hash of some data used by the chain.
-pub type Hash = sp_core::H256;
+pub  type Hash = sp_core::H256;
 
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
 /// the specifics of the runtime. They can then be made to be agnostic over specific formats
 /// of data like extrinsics, allowing for them to continue syncing the network through upgrades
 /// to even the core data structures.
-pub mod opaque {
+pub  mod opaque {
 	use super::*;
 
 	pub use sp_runtime::OpaqueExtrinsic as UncheckedExtrinsic;
@@ -127,7 +127,7 @@ pub mod opaque {
 // To learn more about runtime versioning and what each of the following value means:
 //   https://docs.substrate.io/v3/runtime/upgrades#runtime-versioning
 #[sp_version::runtime_version]
-pub const VERSION: RuntimeVersion = RuntimeVersion {
+pub  const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("appchain-barnacle"),
 	impl_name: create_runtime_str!("appchain-barnacle"),
 	authoring_version: 1,
@@ -143,9 +143,9 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	state_version: 10,
 };
 
-pub const MILLICENTS: Balance = 1_000_000_000; //10_000_000_000_000;
-pub const CENTS: Balance = 1_000 * MILLICENTS; // assume this is worth about a cent.
-pub const DOLLARS: Balance = 100 * CENTS;
+pub  const MILLICENTS: Balance = 1_000_000_000; //10_000_000_000_000;
+pub  const CENTS: Balance = 1_000 * MILLICENTS; // assume this is worth about a cent.
+pub  const DOLLARS: Balance = 100 * CENTS;
 
 /// Since BABE is probabilistic this is the average expected block time that
 /// we are targeting. Blocks will be produced at a minimum duration defined
@@ -164,32 +164,32 @@ pub const DOLLARS: Balance = 100 * CENTS;
 /// `SLOT_DURATION` should have the same value.
 ///
 /// <https://research.web3.foundation/en/latest/polkadot/block-production/Babe.html#-6.-practical-results>
-pub const MILLISECS_PER_BLOCK: Moment = 6000;
-pub const SECS_PER_BLOCK: Moment = MILLISECS_PER_BLOCK / 1000;
+pub  const MILLISECS_PER_BLOCK: Moment = 6000;
+pub  const SECS_PER_BLOCK: Moment = MILLISECS_PER_BLOCK / 1000;
 
 // NOTE: Currently it is not possible to change the slot duration after the chain has started.
 //       Attempting to do so will brick block production.
-pub const SLOT_DURATION: Moment = MILLISECS_PER_BLOCK;
+pub  const SLOT_DURATION: Moment = MILLISECS_PER_BLOCK;
 
 // 1 in 4 blocks (on average, not counting collisions) will be primary BABE blocks.
-pub const PRIMARY_PROBABILITY: (u64, u64) = (1, 4);
+pub  const PRIMARY_PROBABILITY: (u64, u64) = (1, 4);
 
 // NOTE: Currently it is not possible to change the epoch duration after the chain has started.
 //       Attempting to do so will brick block production.
-pub const EPOCH_DURATION_IN_BLOCKS: BlockNumber = 4 * HOURS;
-pub const EPOCH_DURATION_IN_SLOTS: u64 = {
+pub  const EPOCH_DURATION_IN_BLOCKS: BlockNumber = 4 * HOURS;
+pub  const EPOCH_DURATION_IN_SLOTS: u64 = {
 	const SLOT_FILL_RATE: f64 = MILLISECS_PER_BLOCK as f64 / SLOT_DURATION as f64;
 
 	(EPOCH_DURATION_IN_BLOCKS as f64 * SLOT_FILL_RATE) as u64
 };
 
 // These time units are defined in number of blocks.
-pub const MINUTES: BlockNumber = 60 / (SECS_PER_BLOCK as BlockNumber);
-pub const HOURS: BlockNumber = MINUTES * 60;
-pub const DAYS: BlockNumber = HOURS * 24;
+pub  const MINUTES: BlockNumber = 60 / (SECS_PER_BLOCK as BlockNumber);
+pub  const HOURS: BlockNumber = MINUTES * 60;
+pub  const DAYS: BlockNumber = HOURS * 24;
 
 /// The BABE epoch configuration at genesis.
-pub const BABE_GENESIS_EPOCH_CONFIG: sp_consensus_babe::BabeEpochConfiguration =
+pub  const BABE_GENESIS_EPOCH_CONFIG: sp_consensus_babe::BabeEpochConfiguration =
 	sp_consensus_babe::BabeEpochConfiguration {
 		c: PRIMARY_PROBABILITY,
 		allowed_slots: sp_consensus_babe::AllowedSlots::PrimaryAndSecondaryPlainSlots,
@@ -197,7 +197,7 @@ pub const BABE_GENESIS_EPOCH_CONFIG: sp_consensus_babe::BabeEpochConfiguration =
 
 /// The version information used to identify this runtime when compiled natively.
 #[cfg(feature = "std")]
-pub fn native_version() -> NativeVersion {
+pub  fn native_version() -> NativeVersion {
 	NativeVersion { runtime_version: VERSION, can_author_with: Default::default() }
 }
 
@@ -522,8 +522,8 @@ parameter_types! {
 	pub const MetadataDepositPerByte: Balance = 1 * DOLLARS;
 }
 
-pub type AssetBalance = u128;
-pub type AssetId = u32;
+pub  type AssetBalance = u128;
+pub  type AssetId = u32;
 
 impl pallet_assets::Config<pallet_assets::Instance1> for Runtime {
 	type Event = Event;
@@ -605,7 +605,7 @@ impl pallet_beefy_mmr::Config for Runtime {
 	type ParachainHeads = ();
 }
 
-pub struct OctopusAppCrypto;
+pub  struct OctopusAppCrypto;
 
 impl frame_system::offchain::AppCrypto<<Signature as Verify>::Signer, Signature>
 	for OctopusAppCrypto
@@ -788,13 +788,13 @@ construct_runtime!(
 );
 
 /// The address format for describing accounts.
-pub type Address = sp_runtime::MultiAddress<AccountId, ()>;
+pub  type Address = sp_runtime::MultiAddress<AccountId, ()>;
 /// Block header type as expected by this runtime.
-pub type Header = generic::Header<BlockNumber, BlakeTwo256>;
+pub  type Header = generic::Header<BlockNumber, BlakeTwo256>;
 /// Block type as expected by this runtime.
-pub type Block = generic::Block<Header, UncheckedExtrinsic>;
+pub  type Block = generic::Block<Header, UncheckedExtrinsic>;
 /// The SignedExtension to the basic transaction logic.
-pub type SignedExtra = (
+pub  type SignedExtra = (
 	frame_system::CheckNonZeroSender<Runtime>,
 	frame_system::CheckSpecVersion<Runtime>,
 	frame_system::CheckTxVersion<Runtime>,
@@ -805,11 +805,11 @@ pub type SignedExtra = (
 	pallet_transaction_payment::ChargeTransactionPayment<Runtime>,
 );
 /// Unchecked extrinsic type as expected by this runtime.
-pub type UncheckedExtrinsic = generic::UncheckedExtrinsic<Address, Call, Signature, SignedExtra>;
+pub  type UncheckedExtrinsic = generic::UncheckedExtrinsic<Address, Call, Signature, SignedExtra>;
 /// The payload being signed in transactions.
-pub type SignedPayload = generic::SignedPayload<Call, SignedExtra>;
+pub  type SignedPayload = generic::SignedPayload<Call, SignedExtra>;
 /// Executive: handles dispatch to the various modules.
-pub type Executive = frame_executive::Executive<
+pub  type Executive = frame_executive::Executive<
 	Runtime,
 	Block,
 	frame_system::ChainContext<Runtime>,

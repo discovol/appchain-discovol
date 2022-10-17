@@ -24,7 +24,7 @@ use sp_runtime::traits::{IdentifyAccount, Verify};
 /// customizable from the chain spec.
 #[derive(Default, Clone, Serialize, Deserialize, ChainSpecExtension)]
 #[serde(rename_all = "camelCase")]
-pub struct Extensions {
+pub  struct Extensions {
 	/// Block numbers with known hashes.
 	pub fork_blocks: sc_client_api::ForkBlocks<Block>,
 	/// Known bad block hashes.
@@ -34,14 +34,14 @@ pub struct Extensions {
 }
 
 /// Specialized `ChainSpec`.
-pub type ChainSpec = sc_service::GenericChainSpec<GenesisConfig, Extensions>;
+pub  type ChainSpec = sc_service::GenericChainSpec<GenesisConfig, Extensions>;
 
-pub fn octopus_testnet_config() -> Result<ChainSpec, String> {
+pub  fn octopus_testnet_config() -> Result<ChainSpec, String> {
 	//ChainSpec::from_json_bytes(&include_bytes!("../../resources/octopus-testnet.json")[..])
 	ChainSpec::from_json_bytes(&include_bytes!("../../resources/discovolSpecRaw.json")[..])
 }
 
-pub fn octopus_mainnet_config() -> Result<ChainSpec, String> {
+pub  fn octopus_mainnet_config() -> Result<ChainSpec, String> {
 	ChainSpec::from_json_bytes(&include_bytes!("../../resources/octopus-mainnet.json")[..])
 }
 
@@ -56,7 +56,7 @@ fn session_keys(
 }
 
 /// Generate a crypto pair from seed.
-pub fn get_from_seed<TPublic: Public>(seed: &str) -> <TPublic::Pair as Pair>::Public {
+pub  fn get_from_seed<TPublic: Public>(seed: &str) -> <TPublic::Pair as Pair>::Public {
 	TPublic::Pair::from_string(&format!("//{}", seed), None)
 		.expect("static values are valid; qed")
 		.public()
@@ -65,7 +65,7 @@ pub fn get_from_seed<TPublic: Public>(seed: &str) -> <TPublic::Pair as Pair>::Pu
 type AccountPublic = <Signature as Verify>::Signer;
 
 /// Generate an account ID from seed.
-pub fn get_account_id_from_seed<TPublic: Public>(seed: &str) -> AccountId
+pub  fn get_account_id_from_seed<TPublic: Public>(seed: &str) -> AccountId
 where
 	AccountPublic: From<<TPublic::Pair as Pair>::Public>,
 {
@@ -73,7 +73,7 @@ where
 }
 
 /// Helper function to generate stash, controller and session key from seed
-pub fn authority_keys_from_seed(
+pub  fn authority_keys_from_seed(
 	seed: &str,
 ) -> (AccountId, BabeId, GrandpaId, ImOnlineId, BeefyId, OctopusId) {
 	(
@@ -86,7 +86,7 @@ pub fn authority_keys_from_seed(
 	)
 }
 
-pub fn development_config() -> Result<ChainSpec, String> {
+pub  fn development_config() -> Result<ChainSpec, String> {
 	let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
 
 	Ok(ChainSpec::from_genesis(
@@ -124,7 +124,7 @@ pub fn development_config() -> Result<ChainSpec, String> {
 	))
 }
 
-pub fn local_testnet_config() -> Result<ChainSpec, String> {
+pub  fn local_testnet_config() -> Result<ChainSpec, String> {
 	let wasm_binary = WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?;
 
 	Ok(ChainSpec::from_genesis(
