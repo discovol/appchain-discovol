@@ -1,6 +1,6 @@
-# Octopus Appchain Template
+# Discovol Appchain Node
 
-# TODO
+# Build
 ```
 $ cargo build
 $ ./target/debug/appchain-barnacle purge-chain --dev
